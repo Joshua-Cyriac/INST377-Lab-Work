@@ -1,5 +1,4 @@
-game-container {
-
+.game-container {
     width: 500px;
     height: 730px;
     position: absolute;
@@ -14,7 +13,16 @@ game-container {
 
 .ground{
     background-color: brown;
-    width: 500 px;
+    width: 500px;
     height: 150px;
     position: absolute;
+    top: 500px;
+}
+
+
+.bird {
+    background-color: yellow;
+    position: absolute;
+    width: 60px;
+    height: 45px;
 }
