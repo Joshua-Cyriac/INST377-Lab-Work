@@ -15,4 +15,13 @@ document.addEventListener('DOMContentLoaded' , () => {
 
     }
     let timerID = setInterval(StartGame, 20)
+
+    function jump(){
+
+        bird.style.bottom = birdBottom + 'px'
+
+
+    }
+
+       
 }) 
