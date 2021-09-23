@@ -16,7 +16,7 @@
     width: 500px;
     height: 150px;
     position: absolute;
-    top: 580px;
+    top: 575px;
 }
 
 
@@ -25,11 +25,21 @@
     position: absolute;
     width: 60px;
     height: 45px;
+    z-index: 3;
 }
 
 .obstacle {
-background-color: green;
+background-image: url('flappybird-pipe.png');
 width: 60px;
 height: 300px;
 position: absolute;
+z-index: 5;
+}
+
+.topObstacle {
+    background-image: url('flappybird-pipe.png');
+    transform: rotate(180deg);
+    width: 60px;
+    height: 300px;
+    position: absolute;
 }
