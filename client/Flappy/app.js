@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded' , () => {
     const ground = document.querySelector('.ground')
 
     let birdLeft = 220
-    let birdBottom = 200
-    let gravity = 3
+    let birdBottom = 300
+    let gravity = 3  
     let isGameOver = false
     let gap = 430
 
@@ -26,8 +26,8 @@ document.addEventListener('DOMContentLoaded' , () => {
 
     function jump(){
         if (birdBottom < 500) birdBottom += 50
-        bird.style.bottom = birdBottom + 'px'
         console.log(birdBottom)
+        bird.style.bottom = birdBottom + 'px'
     }
     document.addEventListener('keyup', control)
 
@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded' , () => {
         let obstacleLeft = 500  
         let randomHeight = Math.random() * 60
         let obstacleBottom = randomHeight
+        console.log("obstacleBottom: ", obstacleBottom)
         const obstacle = document.createElement('div')
         const topObstacle = document.createElement('div')
         if (!isGameOver) { 
@@ -63,16 +64,17 @@ document.addEventListener('DOMContentLoaded' , () => {
     
             } 
             if ((obstacleLeft > 200 && obstacleLeft < 280 && birdLeft === 220 &&
-                birdBottom < obstacleBottom + 153 ||  birdBottom > obstacleBottom + gap - 200) ||
-                birdBottom === 100
+                (birdBottom < obstacleBottom  + 300 ||  birdBottom > obstacleBottom + gap) ||
+                birdBottom === 0) || birdBottom <= 165
                 ) {
+                    console.log("birdBottom: ", birdBottom, "obstacleBottom: ", obstacleBottom,"birdLeft: ", birdLeft, "obstacleLeft:",  obstacleLeft, "gap: ", gap)
                 gameOver()
                 clearInterval(timerID)
             }
         }
 
         let timerID = setInterval(moveObstacle, 20)
-        if (!isGameOver)  setTimeout(generateObstacle, 3000)
+        if (!isGameOver)  setTimeout(generateObstacle, 5000)
     }
 
     generateObstacle()
