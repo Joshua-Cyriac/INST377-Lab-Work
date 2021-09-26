@@ -2,15 +2,15 @@
 <html lang='en'>
   <head>
     <meta charset='UTF-8'/>
-    <title>Josh's Lab 3</title>
+    <title>Josh's Lab 4</title>
     <link rel='stylesheet' href='styles.css'/>
   </head>
   <body>
-      <h1 class="title" >Joshua Cyriac Lab 3: Flexbox and Responisive Pages</h1>
+      <h1 class="title" >Joshua Cyriac Lab 4</h1>
 
     <div class='menu-container'>
       <div class='menu'>
-        <div class='date'>Sept 20, 2021</div>
+        <div class='date'>Sept 25, 2021</div>
         <!-- add link here with a href -->
         <div class='database-demo'><a href="data.html">Database Demo</a></div> 
         <div class='main-page'>Main Page</div>
@@ -25,32 +25,47 @@
           <div class='social'><a href='https://github.com/Joshua-Cyriac'> My Github Website</a></div>
         </div>
     </div>
-
+    <!-- In the grid container make a carsoul in this area to import the images each image is a carsoul_item -->
     <div class='photo-grid-container'>
-      <div class='photo-grid'>
-        <div class='photo-grid-item first-item'>
-          <img src='images/one.svg'/>
-        </div>
-        <div class='photo-grid-item'>
-          <img src='images/two.svg'/>
-        </div>
-        <div class='photo-grid-item'>
-          <img src='images/three.svg'/>
-        </div>
-          <div class='photo-grid-item'>
-            <img src="images/four.svg">
-          </div>
-          <div class='photo-grid-item last-item'>
-            <img src="images/five.svg">
-          </div>
-       </div>
+      <div class="carousel__actions" style="vertical-align: center;">
+        <button id="carousel__button--prev" aria-label="Previous slide">Prev</button>
       </div>
 
+
+      <div class='carousel'>
+
+          <div class='carousel__item carousel__item--visible'>
+            <img src='images/one.svg'/>
+          </div>
+          <div class='carousel__item carousel__item--hidden'>
+            <img src='images/two.svg'/>
+          </div>
+          <div class='carousel__item carousel__item--hidden'>
+            <img src='images/three.svg'/>
+          </div>
+          <div class='carousel__item carousel__item--hidden'>
+              <img src="images/four.svg">
+          </div>
+          <div class='carousel__item carousel__item--hidden'>
+              <img src="images/five.svg">
+            </div>
+        </div>
+
+        <div class="carousel__actions">
+          <button id="carousel__button--next" aria-label="Next slide">Next</button>
+        </div>
+      </div>
+      </div>
+
+      <div></div>
+      <!-- Create the buttons and lable carousel_items and make a previous and next button -->
       <div class='footer'>
         <div class='footer-item footer-one'>Footer 1</div>
         <div class='footer-item footer-two'> Footer 2</div>
         <div class='footer-item footer-three'>Footer 3</div>
       </div>
-    
+
+
+      <script src="script.js"></script>
   </body>
 </html>
