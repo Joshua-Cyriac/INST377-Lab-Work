@@ -106,7 +106,7 @@
   flex: initial;
   width: 300px;
 }
-
+/* make the buttons be aligned properly with using aligned self*/
 
 .carousel{
   overflow: hidden;
@@ -133,7 +133,7 @@
 .carousel .carousel__actions {
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -146,6 +146,8 @@
   cursor: pointer;
   width: 40px;
   height: 40px;
+  display: flex;
+  justify-content: center;
 }
 
 .carousel .carousel__actions button#carousel__button--prev {
