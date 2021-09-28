@@ -1,0 +1,25 @@
+/* creating a grid  background that is yellow and is big for the game container */
+.grid {
+    width:  400px;
+    height: 600px;
+    background-color: yellow;
+    position: relative;
+    font-size: 100px;
+    text-align: center;
+}
+
+/* creating the charater that jumps on the platforms */
+.doodler{
+    width: 87px;
+    height: 85px;
+    background-color: red;
+    position: absolute;
+
+}
+/* making the platform green where the doodler jumops on */
+.platform{
+    width: 85px;
+    height: 15px;
+    background-color: green;
+    position: absolute;
+}
