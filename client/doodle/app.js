@@ -20,13 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
     let leftTimerId
     let rightTimerId
   
-    // 
+    // construct 
     class Platform {
       constructor(newPlatBottom) {
+        // subtract the grid width from the platform width to make the platforms be in the area within the grid
         this.left = Math.random() * 315
         this.bottom = newPlatBottom
+        // this will generate a div in each platform
         this.visual = document.createElement('div')
-  
+        // This will create a new viual for the platform that we are going to make
         const visual = this.visual
         visual.classList.add('platform')
         visual.style.left = this.left + 'px'
@@ -39,9 +41,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function createPlatforms() {
       for(let i =0; i < platformCount; i++) {
         //Make a gap between each platform and give each platform a new incriment in height so they are not stack near each other
+        // 600 being the height of the container
         let platGap = 600 / platformCount
         let newPlatBottom = 100 + i * platGap
         let newPlatform = new Platform (newPlatBottom)
+        // push platforms to see platforms 
         platforms.push(newPlatform)
         console.log(platforms)
       }
@@ -70,8 +74,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // make a function to pull the doodler into the grid so it will be presented
     function createDoodler() {
       grid.appendChild(doodler)
+      // Add the doodler to class
       doodler.classList.add('doodler')
       doodlerLeftSpace = platforms[0].left
+      // Move the doodler to the right and then shift it to the bottom for the inital position
       doodler.style.left = doodlerLeftSpace + 'px'
       doodler.style.bottom = doodlerBottomSpace + 'px'
     }
@@ -103,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
       },20)
   }
-  
+  // Create a function which allows the doodler to jump
     function jump() {
       clearInterval(downTimerId)
       isJumping = true
@@ -159,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
       clearInterval(rightTimerId)
     }
   
-    //assign functions to keyCodes
+    //assign functions to keyCodes for the direction of where the doodler is moving
     function control(e) {
       doodler.style.bottom = doodlerBottomSpace + 'px'
       if(e.key === 'ArrowLeft') {
@@ -184,11 +190,12 @@ document.addEventListener('DOMContentLoaded', () => {
       clearInterval(rightTimerId)
     }
   
-  
+  // call the whole program and run all the functions throught the start function
     function start() {
       if (!isGameOver) {
         createPlatforms()
         createDoodler()
+        // set the platforms to move at ___ seconds
         setInterval(movePlatforms,30)
         jump(startPoint)
         document.addEventListener('keyup', control)
