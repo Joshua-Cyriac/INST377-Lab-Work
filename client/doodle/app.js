@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log(platforms)
       }
     }
-  
+    // This funcrtion makes platforms move downward at a certain rate
     function movePlatforms() {
       if (doodlerBottomSpace > 200) {
           platforms.forEach(platform => {
