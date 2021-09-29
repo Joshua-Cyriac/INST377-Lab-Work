@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // pick out the grid element from the HTML
     const grid = document.querySelector('.grid')
+    // create a div within the javascript file to make the doodler
     const doodler = document.createElement('div')
     let isGameOver = false
     let speed = 3
@@ -19,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let leftTimerId
     let rightTimerId
   
+    // 
     class Platform {
       constructor(newPlatBottom) {
         this.left = Math.random() * 315
@@ -33,9 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   
-  
+  // Generate Platforms and make it display 5 platforms at a time on the screen 
     function createPlatforms() {
       for(let i =0; i < platformCount; i++) {
+        //Make a gap between each platform and give each platform a new incriment in height so they are not stack near each other
         let platGap = 600 / platformCount
         let newPlatBottom = 100 + i * platGap
         let newPlatform = new Platform (newPlatBottom)
@@ -64,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       
     }
-  
+    // make a function to pull the doodler into the grid so it will be presented
     function createDoodler() {
       grid.appendChild(doodler)
       doodler.classList.add('doodler')
