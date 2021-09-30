@@ -5,11 +5,45 @@
     <title>Joshua Cyriac Lab 5</title>
     <link rel='stylesheet' href='styles.css'/>
   </head>
-  <body>
+  <body style="background-color: yellowgreen;">
     <header class='speaker-form-header'>
       <h1>Joshua Cyriac Lab 5</h1>
-      <p><em>Want to speak at our fake conference? Fill out
-        this form.</em></p>
+
     </header>
+    <!--This where the input collected by the form is 
+      sent when the user clicks the Submit button.  -->
+    <form action='' method='get' class='speaker-form'>
+      <!-- This is where we get the users first name -->
+      <div class='form-row'>
+        <label for='first-name' style="color: black;">First Name</label>
+        <input id='first-name' name='first-name' type='text'/>
+      </div>
+      <!-- This is where we create the food prefrences for the user-->
+      <div class='form-row'>
+        <label for='food-pref' style="color: black;">Food Preference</label>
+        <input id='food-pref' name='food-pref' type='text'/>
+      </div>
+
+      <fieldset class='legacy-form-row' style="color: black;">
+        <legend>Veggie or Vegan?</legend>
+        <!-- This is where one of the boolean options the user can select -->
+        <input id='talk-type-1'
+               name='talk-type'
+               type='radio'
+               value='main-stage' />
+        <label for='talk-type-1' class='radio-label'>Yes</label>
+        <!-- This is the other boolean option for the user to select -->
+        <input id='talk-type-2'
+               name='talk-type'
+               type='radio'
+               value='workshop'
+               checked />
+        <label for='talk-type-2' class='radio-label'>No</label>
+      </fieldset>
+      <div class='form-row'>
+        <button>Submit</button>
+      </div>
+  </form>
+
   </body>
 </html>
