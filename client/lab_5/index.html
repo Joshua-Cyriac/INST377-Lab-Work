@@ -1,65 +1,60 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8'/>
+    <meta charset="UTF-8" />
     <title>Joshua Cyriac Lab 5</title>
-    <link rel='stylesheet' href='styles.css'/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
+    />
   </head>
 
   <body>
-    <!--<header class='speaker-form-header'>
-      <h1>Joshua Cyriac Lab 5</h1>
-
-    </header>-->
-    
-    <section class="hero is-primary">
+    <section class="hero is-primary" style="width: 100%;">
       <div class="hero-body">
-      <p class="title">Joshua Cyriac Lab 5</p>
+        <p class="title">Joshua Cyriac Lab 5</p>
       </div>
     </section>
 
-  <div class="block">
-        <!--This where the input collected by the form is 
+    <div class="block mt-5">
+      <!--This where the input collected by the form is 
           sent when the user clicks the Submit button.  -->
 
-        
-        <!--Form-->
-        <div class="box">
-          <form action="/api" method="GET">
+      <!--Form-->
+      <div class="box">
+        <form action="/api" method="GET">
           <div class="field">
             <label class="label">First Name</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Text input">
+              <input class="input" type="text" placeholder="Text input" />
             </div>
           </div>
 
           <div class="field">
             <label class="label">Food Preference</label>
             <div class="control">
-              <input class="input" type="text" placeholder="Text input">
+              <input class="input" type="text" placeholder="Text input" />
             </div>
           </div>
-        
 
-        <div class="field">
-          <label class="label">Veggie or Vegan?</label>
-          <div class="control">
-            <label class="radio">
-              <input type="radio" name="answer">
-              Yes
-            </label>
-            <label class="radio">
-              <input type="radio" name="answer">
-              No
-            </label>
+          <div class="field">
+            <label class="label">Veggie or Vegan?</label>
+            <div class="control">
+              <label class="radio">
+                <input type="radio" name="answer" />
+                Yes
+              </label>
+              <label class="radio">
+                <input type="radio" name="answer" />
+                No
+              </label>
+            </div>
           </div>
-        </div>
 
-        <input class="button is-success" type="submit" value="Submit">
+          <input class="button is-success" type="submit" value="Submit" />
         </form>
       </div>
-  </div>
-
+    </div>
   </body>
 </html>
