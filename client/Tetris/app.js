@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     }
   
-    //assign functions to keyCodes
+    //assign functions to keyCodes so you can manipulate the tetrominos
     function control(e) {
       if(e.keyCode === 37) {
         moveLeft()
@@ -128,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // remove any trace of the shape so we can have a clean start
       undraw()
       const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
+      // The position of the tetromino will not pass the left most container and continue to move down
       if(!isAtLeftEdge) currentPosition -=1
       if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
         currentPosition +=1
@@ -175,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //rotate the tetromino
     function rotate() {
       undraw()
+      // use the increment operator to move down to our next item in the array
       currentRotation ++
       if(currentRotation === current.length) { //if the current rotation gets to 4, make it go back to 0
         currentRotation = 0
@@ -183,7 +185,6 @@ document.addEventListener('DOMContentLoaded', () => {
       checkRotatedPosition()
       draw()
     }
-    /////////
   
     
     
