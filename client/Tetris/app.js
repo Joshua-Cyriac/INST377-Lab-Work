@@ -59,7 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(theTetrominoes[0][0])
   
     //randomly select a Tetromino and its first rotation
+    // Math.floor will round down to the nearest int value
+    //Math random will select a random number in the array length
     let random = Math.floor(Math.random()*theTetrominoes.length)
+    // make a method that can select a random tetrominoe and only rotate it 
+    // after the current position
     let current = theTetrominoes[random][currentRotation]
   
     //draw the Tetromino
@@ -73,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //undraw the Tetromino
     function undraw() {
       current.forEach(index => {
+          // This will remove our tetrominos from the grid
         squares[currentPosition + index].classList.remove('tetromino')
         squares[currentPosition + index].style.backgroundColor = ''
   
@@ -93,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     document.addEventListener('keyup', control)
   
-    //move down function
+    //move down function to make the tetromino move down every second
     function moveDown() {
       undraw()
       currentPosition += width
@@ -103,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     //freeze function
     function freeze() {
+        // by using the function some it only checks if one of the statements is true
       if(current.some(index => squares[currentPosition + index + width].classList.contains('taken'))) {
         current.forEach(index => squares[currentPosition + index].classList.add('taken'))
         //start a new tetromino falling
@@ -119,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     //move the tetromino left, unless is at the edge or there is a blockage
     function moveLeft() {
+        // remove any trace of the shape so we can have a clean start
       undraw()
       const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0)
       if(!isAtLeftEdge) currentPosition -=1
@@ -244,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //game over
     function gameOver() {
       if(current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
-        scoreDisplay.innerHTML = 'end'
+        scoreDisplay.innerHTML = 'End! You got:' + score
         clearInterval(timerId)
       }
     }
