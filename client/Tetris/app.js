@@ -231,6 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     //add score
     function addScore() {
+        // the intial score will be 0 and can not exceed
       for (let i = 0; i < 199; i +=width) {
         const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9]
   
@@ -238,6 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
           score +=10
           scoreDisplay.innerHTML = score
           row.forEach(index => {
+           // removes each tetromino when there is a full stack   
             squares[index].classList.remove('taken')
             squares[index].classList.remove('tetromino')
             squares[index].style.backgroundColor = ''
