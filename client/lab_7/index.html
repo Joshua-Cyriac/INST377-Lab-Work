@@ -4,6 +4,7 @@
     <meta charset='UTF-8'/>
     <title>Josh's Lab 6</title>
     <link rel='stylesheet' href='styles.css'/>
+    <script src="Leaflet.js" charset= "utf-8"></script>
 </head>
 
 <body>
@@ -28,9 +29,6 @@
 async function windowActions() {
     // this is the url we are pulling information from
     const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
-
-
-    
 
 
     const request = await fetch(endpoint)
