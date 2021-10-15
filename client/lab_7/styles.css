@@ -22,3 +22,9 @@
 .name {
     color: black;
 }
+
+#mapid { 
+    height: 180px;
+    width: 350px; 
+    margin-left: 20px;
+}
