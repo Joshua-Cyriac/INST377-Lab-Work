@@ -1,0 +1,24 @@
+.search-result {
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 15px;
+    background-color: turquoise;
+}
+
+.heading {
+    font-weight: bold;
+}
+
+.subheading {
+    font-weight: lighter;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.name {
+    color: black;
+}
