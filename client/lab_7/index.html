@@ -1,86 +1,94 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html lang="en">
   <head>
-    <meta charset='UTF-8'/>
+    <meta charset="UTF-8" />
     <title>Josh's Lab 6</title>
-    <link rel='stylesheet' href='styles.css'/>
-    <script src="Leaflet.js" charset= "utf-8"></script>
-</head>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="Leaflet.js" charset="utf-8"></script>
+  </head>
 
-<body>
-<h1>Joshua Cyriac Lab 6</h1>
-
-<div class="box">
-      <div class="field">
-        <label class="label"></label>
-        <div class="control">
-          <input class="search" type="text" placeholder="Search" />
+  <body>
+    <div class="flex-container">
+      <div>
+        <h1 style="margin-bottom: 0px">Joshua Cyriac Lab 7</h1>
+        <div class="subheading">Zip Code Food Search</div>
+        <form>
+          <div class="field">
+            <label class="label">Search</label>
+            <div class="control">
+              <input class="search" type="text" placeholder="Search" />
+            </div>
+          </div>
+        </form>
+        <div class="results">
+          <div class="suggestions"></div>
         </div>
       </div>
-      
-      <div class="results">
-          <ul class="suggestions">
+    </div>
 
-          </ul>
-      </div>
-</div>
+    <script>
+      async function windowActions() {
+        // this is the url we are pulling information from
+        const endpoint =
+          "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json";
 
-<script>
-async function windowActions() {
-    // this is the url we are pulling information from
-    const endpoint = 'https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json';
+        const request = await fetch(endpoint)
+          //Make the data as a json file then push it so it can return the data
+          .then((blob) => blob.json());
+        //.then(data => pgFood.push(...data))
 
+        //.then(data => console.log(data))      Used to pull up all the food data
 
-    const request = await fetch(endpoint)
-    //Make the data as a json file then push it so it can return the data
-    .then(blob => blob.json())
-    //.then(data => pgFood.push(...data))
+        // This will be our empty array for the itemss that the user what to filter out
+        const pgFood = await request;
 
-    //.then(data => console.log(data))      Used to pull up all the food data
- 
-    // This will be our empty array for the itemss that the user what to filter out
-    const pgFood = await request;
+        const searchInput = document.querySelector(".search");
+        const suggestions = document.querySelector(".suggestions");
 
-    const searchInput = document.querySelector('.search');
-    const suggestions = document.querySelector('.suggestions');
+        function findMatches(wordToMatch, pgFood) {
+          return pgFood.filter((place) => {
+            //here we need to figure out if the food source matches what was searched
+            const regex = new RegExp(wordToMatch, "gi");
+            return place.zip.match(regex);
+          });
+        }
+        function displayMatches(event) {
+          if (event.target.value == "") {
+            suggestions.innerHTML = `<div></div>`;
+          } else {
+                const matchArray = findMatches(event.target.value, pgFood).slice(
+                0,
+                5
+                ); //Change the [] to pgFood
+                const html = matchArray
+                .map((place) => {
+                    const regex = new RegExp(event.target.value, "gi");
+                    const restName = place.name.replace(
+                    regex,
+                    `<span>${place.name}</span>`
+                    ); //event.target.value
+                    const address = place.address_line_1.replace(
+                    regex,
+                    `<span class = h2>${place.address_line_1}</span>`
+                    );
+                    return `
+                <div class="search-result">
+                    <span class="name"><span class="heading">${restName}</span><br>${address}</span>
+                </div>
+                `;
+                })
+                .join("");
+                suggestions.innerHTML = html;
+          }
+        }
 
-    function findMatches(wordToMatch, pgFood){
-
-        return pgFood.filter(place => {
-            //here we need to figure out if the food source matches what was searched 
-            const regex = new RegExp(wordToMatch, 'gi');
-            return place.name.match(regex) || place.zip.match(regex)
+        searchInput.addEventListener("change", displayMatches);
+        searchInput.addEventListener("keyup", (evt) => {
+          displayMatches(evt);
         });
-    }
-    function displayMatches(event) {
-        
-        const matchArray = findMatches(event.target.value, pgFood);     //Change the [] to pgFood
-        const html = matchArray.map(place => {
-        const regex = new RegExp(event.target.value, 'gi');  
-        const restName = place.name.replace(regex, `<span class = h2>${place.name}</span>`)     //event.target.value
-        const zipNum = place.zip.replace(regex, `<span class = h2>${place.zip}</span>`)   
-               return `
-            <li>
-                <span class="name">${restName}<br> ${zipNum}</span>
-            </li>
-            `;
-        }).join('')
-        suggestions.innerHTML = html;
-    } 
+      }
 
-
-
-searchInput.addEventListener('change', displayMatches);
-searchInput.addEventListener('keyup', (evt) => { displayMatches(evt) });
-}
-
-window.onload = windowActions;
-
-</script>
-
-
-
-</body>
-
-
+      window.onload = windowActions;
+    </script>
+  </body>
 </html>
