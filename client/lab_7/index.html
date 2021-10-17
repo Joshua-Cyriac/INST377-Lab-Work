@@ -40,7 +40,15 @@
     </div>
 
     <script>
+       
       async function windowActions() {
+        // Creates the map and sets the initial coordinates
+       var mymap = L.map("mapid").setView([38.9897, -76.9378], 12.5);
+        L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
+          attribution:
+            '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+        }).addTo(mymap);
+
         // this is the url we are pulling information from
         const endpoint =
           "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json";
@@ -69,10 +77,24 @@
           if (event.target.value == "") {
             suggestions.innerHTML = `<div></div>`;
           } else {
+            //Erase Map
+            
             const matchArray = findMatches(event.target.value, pgFood).slice(
               0,
               5
             ); //Change the [] to pgFood
+
+            // Created the array of coordinates for top 5 suggestions
+            const geo = matchArray.map(function(item) {
+              //return [item['geocoded_column_1']['coordinates'][1],item['geocoded_column_1']['coordinates'][0]]
+              return L.marker([item['geocoded_column_1']['coordinates'][1],item['geocoded_column_1']['coordinates'][0]]).addTo(mymap)
+            })
+            
+            console.log(geo)
+          
+            
+          
+
             const html = matchArray
               .map((place) => {
                 const regex = new RegExp(event.target.value, "gi");
@@ -99,14 +121,14 @@
         searchInput.addEventListener("keyup", (evt) => {
           displayMatches(evt);
         });
+
+       
+
       }
 
-      var mymap = L.map("mapid").setView([38.9897, -76.9378], 12.5);
-      L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
-        attribution:
-          '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      }).addTo(mymap);
-      window.onload = windowActions;
+      
+
+      
 
     // var polygon = L.polygon([
     // [51.509, -0.08],
@@ -137,7 +159,7 @@
 
 //  mymap.on('click', onMapClick);
 
-
+    window.onload = windowActions;
     </script>
   </body>
 </html>
