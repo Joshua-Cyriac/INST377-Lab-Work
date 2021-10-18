@@ -63,6 +63,8 @@
         // This will be our empty array for the itemss that the user what to filter out
         const pgFood = await request;
 
+        var markers = []
+
         const searchInput = document.querySelector(".search");
         const suggestions = document.querySelector(".suggestions");
 
@@ -76,18 +78,23 @@
         function displayMatches(event) {
           if (event.target.value == "") {
             suggestions.innerHTML = `<div></div>`;
+            markers.map(function(mark) {
+              return mymap.removeLayer(mark);
+            })
           } else {
             //Erase Map
-            
             const matchArray = findMatches(event.target.value, pgFood).slice(
               0,
               5
             ); //Change the [] to pgFood
 
+            console.log("matchArray: ", matchArray)
+
             // Created the array of coordinates for top 5 suggestions
             const geo = matchArray.map(function(item) {
               //return [item['geocoded_column_1']['coordinates'][1],item['geocoded_column_1']['coordinates'][0]]
-              return L.marker([item['geocoded_column_1']['coordinates'][1],item['geocoded_column_1']['coordinates'][0]]).addTo(mymap)
+              markers.push(L.marker([item['geocoded_column_1']['coordinates'][1],item['geocoded_column_1']['coordinates'][0]]).addTo(mymap))
+              return markers[markers.length - 1]
             })
             
             console.log(geo)
